@@ -1,6 +1,6 @@
-
 const video = document.querySelector("video");
 const textElem = document.querySelector("[data-text]");
+const startBtn = document.querySelector("button");
 async function setup() {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true })
     video.srcObject = stream
@@ -16,10 +16,7 @@ async function setup() {
             canvas.height = video.height
             canvas.width = video.width
 
-            document.addEventListener("keypress", async e => {
-                if (e.code !== "Space") {
-                    return
-                }
+            startBtn.addEventListener("click", async () => {
                 canvas.getContext("2d").drawImage(video, 0, 0, video.width, video.height)
                 const { data: { text } } = await worker.recognize(canvas);
                 
