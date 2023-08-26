@@ -37,3 +37,11 @@ button:hover {
     border: 1px solid white;
     transform: scale(1.2);
 }
+#switchCameraButton {
+    display: none;
+}
+@media screen and (max-width: 700px) {
+    #switchCameraButton {
+        display: block;
+    }
+}
